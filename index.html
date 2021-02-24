@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
+</head>
+<body>
+    
+    <form>
+        <input type="text" name="" id="A" placeholder="Первое множество:">
+        <input type="text" name="" id="B" placeholder = "Второе множество:">
+        <!--<button type="button" class="" id="" onclick="" onchange="" >Клик</button>-->
+
+        <div style="margin-top: 25px;">
+            <button type="button" onclick="click_one()">Обьединение: </button><span id="one"></span><br>
+            <button type="button"onclick="click_two()" >Пересечение: </button><span id="two"></span><br>
+            <button type="button" onclick="click_three()">Дополнение: </button><span id="three"></span><br>
+            <button type="button" onclick="click_four()">Сим.разность: </button><span id="four"></span><br>
+
+            <button type="button" onclick="test()">Массив</button><span id="mass"></span>
+        </div>
+    </form>
+
+    <script>
+        
+
+
+        function click_one () {
+            var A = parseInt(document.getElementById('A').value);
+            var B = parseInt(document.getElementById('B').value);
+            var res = '';
+            var sum = A + B;
+            res = String(sum);
+            document.getElementById('one').innerHTML = res;
+        }
+
+
+        function click_two (){
+            var A = parseInt(document.getElementById('A').value);
+            var B = parseInt(document.getElementById('B').value);
+            var res = '';
+            var sum = A - B;
+            res = String(sum);
+            document.getElementById('two').innerHTML = res;
+        }
+
+        function click_three (){
+            var A = parseInt(document.getElementById('A').value);
+            var B = parseInt(document.getElementById('B').value);
+            var res = '';
+            var sum = A - B;
+            res = String(sum);
+            document.getElementById('three').innerHTML = res;
+        }
+
+        function click_four (){
+            var A = parseInt(document.getElementById('A').value);
+            var B = parseInt(document.getElementById('B').value);
+            var res = '';
+            var sum = A - B;
+            res = String(sum);
+            document.getElementById('four').innerHTML = res;
+        }
+
+        function test (){
+            var A = parseInt(document.getElementById('A').value);
+            var B = parseInt(document.getElementById('B').value);
+            var res = '';
+            
+            
+            document.getElementById('mass').innerHTML = res;
+        }
+
+
+    </script>
+</body>
+</html>
