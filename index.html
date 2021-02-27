@@ -128,7 +128,28 @@
         }
 
         function click_four (){
-            
+            var A = document.getElementById('A').value;
+			A = A.trim();
+			A = A.split(' ');
+            var B = document.getElementById('B').value;
+			B = B.trim();
+			B = B.split(' ');
+
+			var sum = [];
+			for(var i = 0; i < A.length; i++){
+				if (sum.includes(A[i], 0) != true && B.includes(A[i], 0) != true){
+					sum.push(A[i])
+				}
+			}
+			for(var i = 0; i < B.length; i++){
+				if (sum.includes(B[i], 0) != true && A.includes(B[i], 0) != true){
+					sum.push(B[i])
+				}
+			}
+
+			var result = "Симмет.разность: " + sum.join(' '); 
+			console.log(result);
+			document.getElementById('four').innerHTML = result;
 		}
 
 
