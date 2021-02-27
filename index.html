@@ -7,7 +7,9 @@
     <title>Learn</title>
 </head>
 <body>
-    
+	<p>Пример ввода</p>
+    <p>cicj - число четное число нечетное</p>
+
     <form>
         <input type="text" name="" id="A" placeholder="Первое множество:">
         <input type="text" name="" id="B" placeholder = "Второе множество:">
@@ -18,60 +20,116 @@
             <button type="button"onclick="click_two()" >Пересечение: </button><span id="two"></span><br>
             <button type="button" onclick="click_three()">Дополнение: </button><span id="three"></span><br>
             <button type="button" onclick="click_four()">Сим.разность: </button><span id="four"></span><br>
-
-            <button type="button" onclick="test()">Массив</button><span id="mass"></span>
+			<button type="button" onclick="get()">Mas</button>
         </div>
     </form>
 
+    
+
     <script>
         
+		function validate () {
+			
+		}
+
+		function get() {
+			var A = document.getElementById('A').value;
+			A = A.trim();
+			A = A.split(' ');
+            var B = document.getElementById('B').value;
+			B = B.trim();
+			B = B.split(' ');
+
+			let numbers = new Set(A);
+			let numbers2 = new Set(B);
+			var a = A + B;
+
+			// for(var i = 0; i <= numbers)
+			
+
+			console.log(a);
+
+
+
+			if( !validate(A) )
+				return;
+
+			if( !validate(B) )
+				return;
+		}
 
 
         function click_one () {
-            var A = parseInt(document.getElementById('A').value);
-            var B = parseInt(document.getElementById('B').value);
-            var res = '';
-            var sum = A + B;
-            res = String(sum);
-            document.getElementById('one').innerHTML = res;
+			var A = document.getElementById('A').value;
+			A = A.trim();
+			A = A.split(' ');
+            var B = document.getElementById('B').value;
+			B = B.trim();
+			B = B.split(' ');
+            var sum = [];
+			for(var i = 0; i < A.length; i++){
+				if (sum.includes(A[i], 0) != true){
+					sum.push(A[i])
+				}
+			}
+			for(var i = 0; i < B.length; i++){
+				if (sum.includes(B[i], 0) != true){
+					sum.push(B[i])
+				}
+			}
+			var result ="Обьединение: " + sum.join(' '); 
+			console.log(result);
+
+            document.getElementById('one').innerHTML = result;
         }
 
 
         function click_two (){
-            var A = parseInt(document.getElementById('A').value);
-            var B = parseInt(document.getElementById('B').value);
-            var res = '';
-            var sum = A - B;
-            res = String(sum);
-            document.getElementById('two').innerHTML = res;
+            var A = document.getElementById('A').value;
+			A = A.trim();
+			A = A.split(' ');
+            var B = document.getElementById('B').value;
+			B = B.trim();
+			B = B.split(' ');
+
+			var sumA = [];
+			var sumB = [];
+			for(var i = 0; i < A.length; i++){
+				if (sumA.includes(A[i], 0) != true && B.includes(A[i], 0) != true){
+					sumA.push(A[i])
+				}
+			}
+			for(var i = 0; i < B.length; i++){
+				if (sumB.includes(B[i], 0) != true && A.includes(B[i], 0) != true){
+					sumB.push(B[i])
+				}
+			}
+			// console.log(sumA);
+			// console.log(sumB);
+			//var req = sumA.concat(sumB);
+			for(var j = 0; j <= req.length; j++){
+			if(sumA.includes(sumB[j], 0) != true){
+				req.push(sumB[j]);
+			}
+		}
+			var result = "Пересечение: " + req;
+
+			document.getElementById('two').innerHTML = result;
+			
         }
 
         function click_three (){
-            var A = parseInt(document.getElementById('A').value);
-            var B = parseInt(document.getElementById('B').value);
-            var res = '';
-            var sum = A - B;
-            res = String(sum);
-            document.getElementById('three').innerHTML = res;
+            var A = document.getElementById('A').value;
+			A = A.trim();
+			A = A.split(' ');
+            var B = document.getElementById('B').value;
+			B = B.trim();
+			B = B.split(' ');
         }
 
         function click_four (){
-            var A = parseInt(document.getElementById('A').value);
-            var B = parseInt(document.getElementById('B').value);
-            var res = '';
-            var sum = A - B;
-            res = String(sum);
-            document.getElementById('four').innerHTML = res;
-        }
-
-        function test (){
-            var A = parseInt(document.getElementById('A').value);
-            var B = parseInt(document.getElementById('B').value);
-            var res = '';
             
-            
-            document.getElementById('mass').innerHTML = res;
-        }
+		}
 
 
     </script>
