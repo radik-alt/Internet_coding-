@@ -11,7 +11,7 @@
     <p>cicj - число четное число нечетное</p>
 
     <form>
-        <input type="text" name="" id="A" placeholder="Первое множество:">
+        <input type="text" name="" id="A" placeholder="Первое множество:" >
         <input type="text" name="" id="B" placeholder = "Второе множество:">
         <!--<button type="button" class="" id="" onclick="" onchange="" >Клик</button>-->
 
@@ -20,7 +20,6 @@
             <button type="button"onclick="click_two()" >Пересечение: </button><span id="two"></span><br>
             <button type="button" onclick="click_three()">Дополнение: </button><span id="three"></span><br>
             <button type="button" onclick="click_four()">Сим.разность: </button><span id="four"></span><br>
-			<button type="button" onclick="get()">Mas</button>
         </div>
     </form>
 
@@ -28,34 +27,35 @@
 
     <script>
         
-		function validate () {
-			
-		}
-
-		function get() {
+		function validate (result) {
 			var A = document.getElementById('A').value;
 			A = A.trim();
 			A = A.split(' ');
             var B = document.getElementById('B').value;
 			B = B.trim();
 			B = B.split(' ');
+ 
 
-			let numbers = new Set(A);
-			let numbers2 = new Set(B);
-			var a = A + B;
 
-			// for(var i = 0; i <= numbers)
 			
 
-			console.log(a);
+			if(isNaN(A[0]) != true && isNaN(B[0]) != true){
+				result = "Неправильно!";
+				if(A[1] % 2 == 0 && B[1] % 2 == 0){
+					result = "Неправильно!";
+					if(isNaN(A[2]) != true && isNaN(B[2]) != true){
+						result = "Неправильно!";
+						if(A[3] % 2 == 1 && B[3] % 2 == 1){
+							result ="Valid: " + A; 
+						} else {
+							result = "Неправильно!";
+						}
+					}
+				}
+			}
 
-
-
-			if( !validate(A) )
-				return;
-
-			if( !validate(B) )
-				return;
+			console.log(A[2]);
+			document.getElementById('valid').innerHTML = result;			
 		}
 
 
@@ -67,56 +67,117 @@
 			B = B.trim();
 			B = B.split(' ');
             var sum = [];
-			for(var i = 0; i < A.length; i++){
-				if (sum.includes(A[i], 0) != true){
-					sum.push(A[i])
+
+
+			if(isNaN(A[0]) != true && isNaN(B[0]) != true){
+				sum = "Неправильно!";
+				if(A[1] % 2 == 0 && B[1] % 2 == 0){
+					sum = "Неправильно!";
+					if(isNaN(A[2]) != true && isNaN(B[2]) != true){
+						sum = "Неправильно!";
+						if(A[3] % 2 == 1 && B[3] % 2 == 1){
+							sum = [];
+							for(var i = 0; i < A.length; i++){
+								if (sum.includes(A[i], 0) != true){
+									sum.push(A[i])
+								}
+							}
+							for(var i = 0; i < B.length; i++){
+								if (sum.includes(B[i], 0) != true){
+									sum.push(B[i])
+								}
+							}
+						} else {
+							sum = "Неправильно!";
+						}
+					}
 				}
 			}
-			for(var i = 0; i < B.length; i++){
-				if (sum.includes(B[i], 0) != true){
-					sum.push(B[i])
-				}
-			}
-			var result ="Обьединение: " + sum.join(' '); 
+
+			
+
+			var result ="Обьединение: " + sum; 
 			console.log(result);
 
             document.getElementById('one').innerHTML = result;
         }
 
-
-        function click_two (){
-            var A = document.getElementById('A').value;
+		function click_two (){
+			var A = document.getElementById('A').value;
 			A = A.trim();
 			A = A.split(' ');
             var B = document.getElementById('B').value;
 			B = B.trim();
 			B = B.split(' ');
+            var sum = [];
+			var sum2 = [];
 
-			var sumA = [];
-			var sumB = [];
-			for(var i = 0; i < A.length; i++){
-				if (sumA.includes(A[i], 0) != true && B.includes(A[i], 0) != true){
-					sumA.push(A[i])
+			if(isNaN(A[0]) != true && isNaN(B[0]) != true){
+				sum2 = "Неправильно!";
+				if(A[1] % 2 == 0 && B[1] % 2 == 0){
+					sum2 = "Неправильно!";
+					if(isNaN(A[2]) != true && isNaN(B[2]) != true){
+						sum2 = "Неправильно!";
+						if(A[3] % 2 == 1 && B[3] % 2 == 1){
+							sum2 = [];
+							for(var i = 0; i < A.length; i++){
+								if (sum.includes(A[i], 0) != true){
+									sum.push(A[i]);
+								}
+							}
+							for(var i = 0; i < B.length; i++){
+								if (sum.includes(B[i], 0) != true){
+									sum.push(B[i]);
+								}
+							}
+
+							
+							for(var i =0; i< sum.length; i++){
+								if(A.includes(B[i])){
+									sum2.push(B[i]);
+								}
+							}
+						} else {
+							sum = "Неправильно!";
+						}
+					}
 				}
 			}
-			for(var i = 0; i < B.length; i++){
-				if (sumB.includes(B[i], 0) != true && A.includes(B[i], 0) != true){
-					sumB.push(B[i])
-				}
-			}
-			// console.log(sumA);
-			// console.log(sumB);
-			//var req = sumA.concat(sumB);
-			for(var j = 0; j <= req.length; j++){
-			if(sumA.includes(sumB[j], 0) != true){
-				req.push(sumB[j]);
-			}
-		}
-			var result = "Пересечение: " + req;
-
-			document.getElementById('two').innerHTML = result;
 			
-        }
+
+			//console.log(sum.length);
+
+			var result ="Пересечение: " + sum2; 
+			console.log(result);
+
+            document.getElementById('two').innerHTML = result;
+
+		}
+
+        // function click_two (){
+        //     var A = document.getElementById('A').value;
+		// 	A = A.trim();
+		// 	A = A.split(' ');
+        //     var B = document.getElementById('B').value;
+		// 	B = B.trim();
+		// 	B = B.split(' ');
+
+		// 	var sum = [...A, ...B];
+		// 	//console.log(sum.length);	
+
+		// 	function resss (){
+		// 		for(var i = 0; i <= (sum.length - 1); i++){
+		// 			console.log(sum[i]);					
+		// 		}
+		// 	}
+
+		// 	resss();
+				
+
+		// 	var result = "Пересечение: " + resss();
+		// 	document.getElementById('two').innerHTML = result;
+			
+        // }
 
         function click_three (){
             var A = document.getElementById('A').value;
@@ -125,6 +186,38 @@
             var B = document.getElementById('B').value;
 			B = B.trim();
 			B = B.split(' ');
+
+			var sum = [];
+
+			if(isNaN(A[0]) != true && isNaN(B[0]) != true){
+				sum = "Неправильно!";
+				if(A[1] % 2 == 0 && B[1] % 2 == 0){
+					sum = "Неправильно!";
+					if(isNaN(A[2]) != true && isNaN(B[2]) != true){
+						sum = "Неправильно!";
+						if(A[3] % 2 == 1 && B[3] % 2 == 1){
+							sum = [];
+							for(var i =0; i < A.length; i++){
+								if (sum.includes(A[i], 0) != true){
+									sum.push(A[i]);
+								}
+							}
+
+							for(var i = 0; i < sum.length; i++){
+								if(A.includes(B[i], 0)){
+									sum.shift(A[i]);
+								}
+							}
+						} else {
+							sum = "Неправильно!";
+						}
+					}
+				}
+			}
+
+
+			var result = "Дополнение: " + sum;
+			document.getElementById('three').innerHTML = result;
         }
 
         function click_four (){
@@ -136,18 +229,38 @@
 			B = B.split(' ');
 
 			var sum = [];
-			for(var i = 0; i < A.length; i++){
-				if (sum.includes(A[i], 0) != true && B.includes(A[i], 0) != true){
-					sum.push(A[i])
-				}
-			}
-			for(var i = 0; i < B.length; i++){
-				if (sum.includes(B[i], 0) != true && A.includes(B[i], 0) != true){
-					sum.push(B[i])
-				}
-			}
+			var result;
 
-			var result = "Симмет.разность: " + sum.join(' '); 
+			if(isNaN(A[0]) != true && isNaN(B[0]) != true){
+				sum = "Неправильно!";
+				if(A[1] % 2 == 0 && B[1] % 2 == 0){
+					sum = "Неправильно!";
+					if(isNaN(A[2]) != true && isNaN(B[2]) != true){
+						sum = "Неправильно!";
+						if(A[3] % 2 == 1 && B[3] % 2 == 1){
+							sum=[];
+							for(var i = 0; i < A.length; i++){
+								if (sum.includes(A[i], 0) != true && B.includes(A[i], 0) != true){
+									sum.push(A[i])
+								}
+							}
+							for(var i = 0; i < B.length; i++){
+								if (sum.includes(B[i], 0) != true && A.includes(B[i], 0) != true){
+									sum.push(B[i])
+								}
+							}
+						} else {
+							sum = "Неправильно!"
+						} 
+					}
+				}
+			}
+			
+			
+			
+			
+
+			result = "Симмет.разность: " + sum; 
 			console.log(result);
 			document.getElementById('four').innerHTML = result;
 		}
